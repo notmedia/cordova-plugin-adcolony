@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns=""
+        id="cordova-plugin-adcolony" version="1.0.0">
+    <name>AdColony Plugin</name>
+    <description>Cordova AdColony Plugin</description>
+    <license>Apache-2.0</license>
+    <keywords>cordova,adcolony</keywords>
+    <js-module src="www/AdColony.js" name="AdColony">
+        <clobbers target="window.AdColony" />
+    </js-module>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="AdColonyPlugin">
+                <param name="ios-package" value="AdColonyPlugin"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/AdColonyPlugin.h" />
+        <source-file src="src/ios/AdColonyPlugin.m" />
+        <framework src="src/ios/AdColony.framework" custom="true"/>
+        <framework src="AudioToolbox.framework"/>
+        <framework src="AdSupport.framework"/>
+        <framework src="AVFoundation.framework"/>
+        <framework src="CoreGraphics.framework" />
+        <framework src="CoreMedia.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="EventKit.framework" />
+        <framework src="EventKitUI.framework"/>
+        <framework src="libz.1.2.5.dylib" />
+        <framework src="MediaPlayer.framework" />
+        <framework src="MessageUI.framework" />
+        <framework src="QuartzCore.framework" />
+        <framework src="Social.framework"/>
+        <framework src="StoreKit.framework"/>
+        <framework src="SystemConfiguration.framework" />
+        <framework src="WebKit.framework" />
+    </platform>
+</plugin>
