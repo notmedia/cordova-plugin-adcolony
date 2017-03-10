@@ -14,9 +14,9 @@ $ cordova plugin add cordova-plugin-adcolony
 # Methods
 
 #### AdColony.configureWithAppID(appID, zoneIDs, options)  
-Initial method wich connects to AdColony.
+Initial method wich connects to AdColony.  
 (string) appID - the appID of your app in AdColony Dashboard  
-([strings]) zoneIDs - array of your ad zones ids
+([strings]) zoneIDs - array of your ad zones ids  
 options - app options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyAppOptions.html) - I will implement this in next updates, now it should be null.
 
 #### AdColony.requestInterstitialInZone(zoneID)  
