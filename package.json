@@ -1,31 +1,31 @@
 {
-  "name": "cordova-plugin-adcolony",
-  "version": "1.0.0",
-  "description": "AdColony ads for Apache Cordova",
-  "cordova": {
-    "id": "cordova-plugin-adcolony",
-    "platforms": [
-      "ios",
-      "android"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/notmedia/cordova-plugin-adcolony.git"
-  },
-  "keywords": [
-    "adcolony",
-    "ads",
-    "video",
-    "ad",
-    "plugin",
-    "ios",
-    "monetisation"
-  ],
-  "author": "notmedia",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/notmedia/cordova-plugin-adcolony/issues"
-  },
-  "homepage": "https://github.com/notmedia/cordova-plugin-adcolony#readme"
+    "name": "cordova-plugin-adcolony",
+    "version": "1.1.0",
+    "description": "AdColony ads for Apache Cordova",
+    "cordova": {
+        "id": "cordova-plugin-adcolony",
+        "platforms": [
+            "ios",
+            "android"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/notmedia/cordova-plugin-adcolony.git"
+    },
+    "keywords": [
+        "adcolony",
+        "ads",
+        "video",
+        "ad",
+        "plugin",
+        "ios",
+        "monetisation"
+    ],
+    "author": "notmedia",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/notmedia/cordova-plugin-adcolony/issues"
+    },
+    "homepage": "https://github.com/notmedia/cordova-plugin-adcolony#readme"
 }

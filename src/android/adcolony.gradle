@@ -1,0 +1,12 @@
+repositories {
+	jcenter()
+	maven {
+    	url  "https://adcolony.bintray.com/AdColony"      
+    }
+}
+
+dependencies {  
+  compile 'com.adcolony:sdk:3.2.1'
+  compile 'com.google.android.gms:play-services-ads:10.0.1'
+  compile 'com.android.support:support-annotations:25.0.1'
+}

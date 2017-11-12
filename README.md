@@ -2,6 +2,7 @@
 AdColony ads for Apache Cordova
 
 iOS SDK version is 3.2.1.0 64bit production
+
 Android SDK version is 3.2.1
 
 # Install plugin
@@ -10,11 +11,13 @@ Android SDK version is 3.2.1
 $ cordova plugin add cordova-plugin-adcolony --variable APP_ID=xxxx --variable ZONE_ID=xxxx
 ```
 
-For the Android Plugin, use the following demo APP_ID and ZONE_ID:
-cordova plugin add cordova-plugin-adcolony --variable APP_ID=app185a7e71e1714831a49ec7 --variable ZONE_ID=vz1fd5a8b2bf6841a0a4b826
+For the Android Plugin, use the following demo APP\_ID and ZONE_ID:
 
-For the iOS Plugin, use the following demo APP_ID and ZONE_ID:
-cordova plugin add cordova-plugin-adcolony --variable APP_ID=appbdee68ae27024084bb334a --variable ZONE_ID=vzf8e4e97704c4445c87504e
+cordova plugin add cordova-plugin-adcolony --variable APP\_ID=app185a7e71e1714831a49ec7 --variable ZONE_ID=vz1fd5a8b2bf6841a0a4b826
+
+For the iOS Plugin, use the following demo APP\_ID and ZONE_ID:
+
+cordova plugin add cordova-plugin-adcolony --variable APP\_ID=appbdee68ae27024084bb334a --variable ZONE_ID=vzf8e4e97704c4445c87504e
 
 If you use both, then you need to use the configureWithAppID method and pass the correct variables in your code
 # Methods
@@ -118,4 +121,6 @@ document.addEventListener('AdColonyRequestNotFilled', (error) => {
 
 ```
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QVU9KQVD2VZML)
+If you have saved some time using my work, do consider donating me something :-)
+
+[Donations through PayPal gratefully accepted](https://www.paypal.me/LADEIRA137)
