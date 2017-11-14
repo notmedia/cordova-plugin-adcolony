@@ -39,9 +39,6 @@ ZONE_ID=vzf8e4e97704c4445c87504e
 
 # Methods
 
-#### AdColony.configure()  
-Initial method wich connects to AdColony using the variables defined in the config.xml file.  
-
 #### AdColony.configureWithAppID(appID, zoneIDs, options)  
 Initial method wich connects to AdColony.  
 (string) appID - the appID of your app in AdColony Dashboard  
@@ -140,4 +137,7 @@ document.addEventListener('AdColonyRequestNotFilled', (error) => {
 
 If you have saved some time using my work, do consider donating me something :-)
 
-[Donations through PayPal gratefully accepted](https://www.paypal.me/LADEIRA137)
+[Donations through PayPal gratefully accepted![paypal.me](https://www.paypalobjects.com/webstatic/paypalme/images/social/pplogo120_4_3.png)](https://www.paypal.me/LADEIRA137)
+
+Original iOS only version Author:
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QVU9KQVD2VZML)
