@@ -17,11 +17,11 @@
  * under the License.
  */
 
-  /**
-  * @brief A Cordova plugin for AdColony
-  * @author Ferdi Ladeira SmartMobiWare Ltd
-  *
-  */
+	/**
+	* @brief A Cordova plugin for AdColony
+	* @author Ferdi Ladeira SmartMobiWare Ltd
+	*
+	*/
 
 #import <Cordova/CDV.h>
 #import <AdColony/AdColony.h>

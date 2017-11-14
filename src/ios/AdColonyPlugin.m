@@ -192,15 +192,15 @@
 }
 
 - (void) showWithPresentingViewController: (CDVInvokedUrlCommand*) command{
-    if (!_adColonyInterstitial.expired){
-        interstitialCallbackId = command.callbackId;
-        [_adColonyInterstitial showWithPresentingViewController:self.viewController];
+	if (!_adColonyInterstitial.expired){
+		interstitialCallbackId = command.callbackId;
+		[_adColonyInterstitial showWithPresentingViewController:self.viewController];
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
 														  messageAsString:@"ShowWithPresentingViewController"];
 		[pluginResult setKeepCallback:[NSNumber numberWithInteger:1]];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 		return;
-    }
+	}
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
 													  messageAsString:@"AdColonyRequestExpiring"];
 	[pluginResult setKeepCallback:[NSNumber numberWithInteger:1]];
