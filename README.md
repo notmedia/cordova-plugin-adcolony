@@ -1,25 +1,42 @@
 # cordova-plugin-adcolony
-AdColony ads for Apache Cordova
+AdColony ads for Apache Cordova.
+
+Allows you to integrate with AdColony from within a Cordova app, supporting both Android and iOS. Requires the AdColony SDK
 
 iOS SDK version is 3.2.1.0 64bit production
 
 Android SDK version is 3.2.1
 
+Please make sure that you read the AdColony Project setup guides for both Android and iOS if you're building on both platforms.
+
+All the documentation is available from here:
+
+[AdColony Android SDK 3](https://github.com/AdColony/AdColony-Android-SDK-3)
+
+[AdColony iOS SDK 3](https://github.com/AdColony/AdColony-iOS-SDK-3)
+
+I recommend that you use cocoapods to install the AdColony Framework dependency
+
 # Install plugin
 
 ```
-$ cordova plugin add cordova-plugin-adcolony --variable APP_ID=xxxx --variable ZONE_ID=xxxx
+$ cordova plugin add cordova-plugin-adcolony
 ```
 
-For the Android Plugin, use the following demo APP\_ID and ZONE_ID:
+See the AdColonyDemoApp code for how to configure and provide an APP\_ID and a ZONE\_ID within your JavaScript
 
-cordova plugin add cordova-plugin-adcolony --variable APP\_ID=app185a7e71e1714831a49ec7 --variable ZONE_ID=vz1fd5a8b2bf6841a0a4b826
+If you are testing the Android Plugin, use the following demo APP\_ID and ZONE_ID:
 
-For the iOS Plugin, use the following demo APP\_ID and ZONE_ID:
+APP\_ID=app185a7e71e1714831a49ec7
 
-cordova plugin add cordova-plugin-adcolony --variable APP\_ID=appbdee68ae27024084bb334a --variable ZONE_ID=vzf8e4e97704c4445c87504e
+ZONE_ID=vz1fd5a8b2bf6841a0a4b826
 
-If you use both, then you need to use the configureWithAppID method and pass the correct variables in your code
+For the iOS Plugin, use the following demo APP\_ID and ZONE_ID in the configureWithAppID method
+
+APP\_ID=appbdee68ae27024084bb334a
+
+ZONE_ID=vzf8e4e97704c4445c87504e
+
 # Methods
 
 #### AdColony.configure()  
@@ -47,7 +64,7 @@ metadata - JSON Array typically with ONE element a JSON object with the user met
 #### AdColony.requestInterstitialInZone(zoneID)  
 Request ad with given zoneID
 
-#### AdColony.requestInterstitialInZone()
+#### AdColony.requestInterstitial()
 Request ad with current zoneID
 
 #### AdColony.registerRewardReceiver(rewardHandler)  

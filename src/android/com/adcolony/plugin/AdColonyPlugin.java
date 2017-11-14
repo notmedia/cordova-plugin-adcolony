@@ -1,8 +1,30 @@
-package com.adcolony.plugin;
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 
-import android.content.pm.ApplicationInfo;
+ /**
+  * @brief A Cordova plugin for AdColony
+  * @author Ferdi Ladeira SmartMobiWare Ltd
+  *
+  */
+ package com.adcolony.plugin;
+
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.util.Log;
 
 import org.apache.cordova.*;
@@ -21,8 +43,8 @@ public class AdColonyPlugin extends CordovaPlugin {
 
     private static CordovaWebView gWebView;
 
-    private String APP_ID = "app185a7e71e1714831a49ec7";
-    private String ZONE_ID = "vz1fd5a8b2bf6841a0a4b826";
+    private String APP_ID = "app185a7e71e1714831a49ec7"; // Demo Android APP_ID
+    private String ZONE_ID = "vz1fd5a8b2bf6841a0a4b826"; // Demo Android ZONE_ID
 
     private Boolean rewardCallBackReady = false;
     private String rewardCallBack = "AdColony.onRewardReceived";
@@ -56,19 +78,6 @@ public class AdColonyPlugin extends CordovaPlugin {
         super.initialize(cordova, webView);
         gWebView = webView;
         Log.d(TAG, "AdColonyPlugin initialize");
-
-        // See if the APP_ID is in the meta-data for the app
-        try {
-            ApplicationInfo ai = cordova.getActivity().getPackageManager().getApplicationInfo(cordova.getActivity().getPackageName(), PackageManager.GET_META_DATA);
-            Bundle metaData = ai.metaData;
-            APP_ID = metaData.getString("com.adcolony.appID");
-            ZONE_ID = metaData.getString("com.adcolony.zoneID");
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(getClass().getCanonicalName(), "Failed to load meta-data, NameNotFound: " + e.getMessage());
-        } catch (NullPointerException e) {
-            Log.e(getClass().getCanonicalName(), "Failed to load meta-data, NullPointer: " + e.getMessage());
-        }
-
 
         /*
          * Set up listener for interstitial ad callbacks. You only need to implement the callbacks
@@ -139,25 +148,6 @@ public class AdColonyPlugin extends CordovaPlugin {
         Log.d(TAG, "AdColonyPlugin execute: " + action);
 
         try {
-            if (action.equals("configure")) {
-                requestArgs = args;
-                cordova.getThreadPool().execute(new Runnable() {
-                    public void run() {
-                        try {
-                            Log.d(TAG, "configure: " + requestArgs);
-                            // Configure AdColony so that cached ads can be available as soon as possible.
-                            // Use existing APP_ID and ZONE_ID
-                            AdColony.configure(
-                                    cordova.getActivity(),
-                                    APP_ID, ZONE_ID);
-                            callbackContext.success("ConfigureSuccess");
-                        } catch (Exception ex) {
-                            callbackContext.error(ex.getMessage());
-                        }
-                    }
-                });
-                return true;
-            }
             if (action.equals("configureWithAppID")) {
                 requestArgs = args;
                 cordova.getThreadPool().execute(new Runnable() {
@@ -172,10 +162,10 @@ public class AdColonyPlugin extends CordovaPlugin {
                             AdColony.configure(
                                     cordova.getActivity(),
                                     APP_ID, ZONE_ID);
-                            if (jsonOptions == null)
-                                callbackContext.success("ConfigureSuccess");
-                            else
-                                setAppOptions(jsonOptions, callbackContext);
+                            if (jsonOptions != null) {
+                                processJSONOptions(jsonOptions.getJSONObject(0));
+                            }
+                            callbackContext.success("ConfigureSuccess");
                         } catch (Exception ex) {
                             callbackContext.error(ex.getMessage());
                         }
@@ -445,25 +435,29 @@ public class AdColonyPlugin extends CordovaPlugin {
     private void setAppOptions(final JSONArray args, final CallbackContext callbackContext) {
         try {
             JSONObject jsonArgs = args.getJSONObject(0);
-            Iterator<?> keys = jsonArgs.keys();
-            if (app_options == null)
-                app_options = AdColony.getAppOptions();
-
-            // Go through all options
-            while (keys.hasNext()) {
-                try {
-                    String key = (String) keys.next();
-                    String val = jsonArgs.getString(key);
-                    app_options.setOption(key, val);
-                } catch (Exception ex) {
-                    // Ignore invalid data
-                }
-            }
-            AdColony.setAppOptions(app_options);
+            processJSONOptions(jsonArgs);
             callbackContext.success("SetAppOptions");
-
         } catch (Exception e) {
             callbackContext.error(e.getMessage());
         }
+    }
+
+    private void processJSONOptions(JSONObject jsonArgs) throws JSONException {
+        Iterator<?> keys = jsonArgs.keys();
+        if (app_options == null)
+            app_options = AdColony.getAppOptions();
+
+        // Go through all options
+        while (keys.hasNext()) {
+            try {
+                String key = (String) keys.next();
+                String val = jsonArgs.getString(key);
+                app_options.setOption(key, val);
+            } catch (Exception ex) {
+                // Ignore invalid data
+            }
+        }
+        AdColony.setAppOptions(app_options);
+
     }
 }

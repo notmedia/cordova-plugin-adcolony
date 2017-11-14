@@ -9,9 +9,6 @@
     <js-module src="www/AdColony.js" name="AdColony">
     </js-module>
 
-    <preference name="APP_ID" />
-    <preference name="ZONE_ID" />
-
     <engines>
         <engine name="cordova-android" version=">=3.5.0" />    <!-- Requires > 3.5.0 because of the custom Framework tag for iOS [CB-6698] -->
         <engine name="cordova-ios" version=">=3.5.0" />        <!-- Requires > 4.0.0 because of the Framework tag for Android that uses gradle -->
@@ -24,17 +21,8 @@
                 <param name="ios-package" value="AdColonyPlugin"/>
             </feature>
         </config-file>
-        <config-file target="*-Info.plist" parent="AdColony">
-			<dict>
-				<key>APP_ID</key>
-				<string>$APP_ID</string>
-				<key>ZONE_ID</key>
-				<string>$ZONE_ID</string>
-			</dict>
-		</config-file>
         <header-file src="src/ios/AdColonyPlugin.h" />
         <source-file src="src/ios/AdColonyPlugin.m" />
-        <framework src="src/ios/AdColony.framework" custom="true"/>
         <framework src="AudioToolbox.framework"/>
         <framework src="AdSupport.framework"/>
         <framework src="AVFoundation.framework"/>
@@ -66,8 +54,6 @@
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-            <meta-data android:name="com.adcolony.appID" android:value="$APP_ID" />
-            <meta-data android:name="com.adcolony.zoneID" android:value="$ZONE_ID" />
 		</config-file>
 
 		<config-file target="res/xml/config.xml" parent="/*">
@@ -79,6 +65,5 @@
 
         <framework src="src/android/adcolony.gradle" custom="true" type="gradleReference" />
         <source-file src="src/android/com/adcolony/plugin/AdColonyPlugin.java" target-dir="src/com/adcolony/plugin" />
-		<source-file src="src/android/com/adcolony/plugin/AdColonyActivity.java" target-dir="src/com/adcolony/plugin" />
     </platform>
 </plugin>
