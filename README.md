@@ -135,6 +135,9 @@ document.addEventListener('AdColonyRequestNotFilled', (error) => {
 
 ```
 
+For a full working demo, I've created a Cordova App [AdColonyCordovaDemo on GitHub](https://github.com/ferdil/AdColonyCordovaDemo)
+
+
 If you have saved some time using my work, do consider donating me something :-)
 
 [Donations through PayPal gratefully accepted![paypal.me](https://www.paypalobjects.com/webstatic/paypalme/images/social/pplogo120_4_3.png)](https://www.paypal.me/LADEIRA137)
