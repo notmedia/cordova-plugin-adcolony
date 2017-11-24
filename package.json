@@ -1,7 +1,7 @@
 {
     "name": "cordova-plugin-adcolony",
-    "version": "1.1.0",
-    "description": "AdColony ads for Apache Cordova",
+    "version": "2.0",
+    "description": "AdColony plugin for Apache Cordova",
     "cordova": {
         "id": "cordova-plugin-adcolony",
         "platforms": [
@@ -23,6 +23,7 @@
         "ad",
         "plugin",
         "ios",
+        "android",
         "monetisation"
     ],
     "author": "notmedia",
