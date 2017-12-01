@@ -33,7 +33,7 @@ APP\_ID=app185a7e71e1714831a49ec7
 
 ZONE_ID=vz1fd5a8b2bf6841a0a4b826
 
-You will need to manually add the contents of the file platforms/android/proguard-adcolony.txt to your existing project proguard-project.txt file (I need to figure out how to do this via a script still)
+You will need to manually merge the contents of the file platforms/android/proguard-adcolony.txt to your existing project proguard-project.txt file (I need to figure out how to do this via a script still)
 
 ### iOS
 

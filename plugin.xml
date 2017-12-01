@@ -70,6 +70,6 @@
 
         <framework src="src/android/adcolony.gradle" custom="true" type="gradleReference"/>
         <source-file src="src/android/com/adcolony/plugin/AdColonyPlugin.java" target-dir="src/com/adcolony/plugin"/>
-        <source-file src="src/android/proguard-project.txt" target-dir="./"/>
+        <source-file src="src/android/proguard-adcolony.txt" target-dir="./"/>
     </platform>
 </plugin>
