@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-adcolony" version="1.0.0">
+        id="cordova-plugin-adcolony" version="2.0.0">
     <name>AdColony Plugin</name>
     <description>Cordova AdColony Plugin by Ferdi Ladeira ferdi@smartmobiware.com</description>
     <license>Apache-2.0</license>
@@ -12,9 +12,9 @@
 
     <engines>
         <engine name="cordova-android"
-                version=">=3.5.0"/>
+                version=">=8.0.0"/>
         <engine name="cordova-ios"
-                version=">=4.0.0"/>
+                version=">=5.0.0"/>
     </engines>
 
 
