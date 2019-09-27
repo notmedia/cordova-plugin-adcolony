@@ -22,7 +22,8 @@
   * @author Ferdi Ladeira SmartMobiWare Ltd
   *
   */
- package com.adcolony.plugin;
+
+package com.adcolony.plugin;
 
 import android.content.pm.PackageManager;
 import android.util.Log;

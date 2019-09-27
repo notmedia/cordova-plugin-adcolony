@@ -3,19 +3,19 @@ AdColony ads for Apache Cordova.
 
 Allows you to integrate with AdColony from within a Cordova app, supporting both Android and iOS. Requires the AdColony SDK
 
-iOS SDK version is 3.2.1.0 64bit production
+iOS SDK version is 4.1.0
 
-Android SDK version is 3.2.1
+Android SDK version is 4.1.0
 
 Please make sure that you read the AdColony Project setup guides for both Android and iOS if you're building on both platforms.
 
 All the documentation is available from here:
 
-[AdColony Android SDK 3](https://github.com/AdColony/AdColony-Android-SDK-3)
+[AdColony Android SDK](ç)
 
-[AdColony iOS SDK 3](https://github.com/AdColony/AdColony-iOS-SDK-3)
+[AdColony iOS SDK](https://github.com/AdColony/AdColony-iOS-SDK)
 
-I recommend that you use cocoapods to install the AdColony Framework dependency
+This update integrates AdColony using a podspec in the plugin definition
 
 # Install plugin
 
@@ -43,25 +43,46 @@ APP\_ID=appbdee68ae27024084bb334a
 
 ZONE_ID=vzf8e4e97704c4445c87504e
 
+Please note that you must follow steps 2 onwards in the AdColony Project Setup notes
+
 # Methods
 
 #### AdColony.configureWithAppID(appID, zoneIDs, options)  
 Initial method wich connects to AdColony.  
 (string) appID - the appID of your app in AdColony Dashboard  
 ([strings]) zoneIDs - array of your ad zones ids  
-options - app options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyAppOptions.html)
+options - app options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html)
 
 #### AdColony.setAppOptions(options)  
 Set App Options.
-options - JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyAppOptions.html)
+options - JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html)
+
+Note that I use the following strings from the Android SDK for cross-platform compatability
+
+```
+orientation
+app_orientation
+origin_store
+disable_logging
+user_id
+gdpr_required
+consent_string
+test_mode
+multi_window_enabled
+mediation_network
+mediation_network_version
+plugin
+plugin_version
+keep_screen_on
+```
 
 #### AdColony.setAdOptions(options)  
 Set Ad options.
-options - JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyAdOptions.html)
+options - JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAdOptions.html)
 
 #### AdColony.setUserMetaData(metadata)  
 Set User meta-data for ad retrieval. Calling this sets the user metadata for all future ad requests 
-metadata - JSON Array typically with ONE element a JSON object with the user meta-data. User meta-data defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyUserMetadata.html)
+metadata - JSON Array typically with ONE element a JSON object with the user meta-data. User meta-data defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyUserMetadata.html)
 
 
 #### AdColony.requestInterstitialInZone(zoneID)  

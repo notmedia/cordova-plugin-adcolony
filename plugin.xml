@@ -42,6 +42,16 @@
         <framework src="StoreKit.framework"/>
         <framework src="SystemConfiguration.framework"/>
         <framework src="WebKit.framework"/>
+		<podspec>
+			<config>
+				<source url="https://github.com/AdColony/AdColony-iOS-SDK.git" />
+				<source url="https://github.com/CocoaPods/Specs.git"/>
+			</config>
+			<pods use-frameworks="true">
+				<pod name="AdColony" />
+			</pods>
+		</podspec>
+
     </platform>
     <platform name="android">
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
