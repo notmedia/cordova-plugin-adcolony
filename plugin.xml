@@ -2,10 +2,10 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="cordova-plugin-adcolony" version="2.0.0">
     <name>AdColony Plugin</name>
-    <description>Cordova AdColony Plugin by Ferdi Ladeira ferdi@smartmobiware.com</description>
+    <description>AdColony plugin for Apache Cordova</description>
     <license>Apache-2.0</license>
-    <keywords>cordova,adcolony</keywords>
-    <author>Ferdi Ladeira</author>
+    <keywords>cordova, adcolony</keywords>
+    <author>Alexey Vasyukov, Ferdi Ladeira</author>
     <js-module src="www/AdColony.js" name="AdColony">
         <clobbers target="window.AdColony" />
     </js-module>
