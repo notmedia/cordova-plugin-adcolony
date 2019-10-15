@@ -1,3 +1,22 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 #import "AdColonyPlugin.h"
 
 @implementation AdColonyPlugin
@@ -16,12 +35,12 @@
 - (void) configureWithAppID: (CDVInvokedUrlCommand*) command{
 	[self.commandDelegate runInBackground:^{
 
-		rewardCallBackReady = false;
-		adColonyAppOptions = [AdColony getAppOptions];
-		if (adColonyAppOptions == nil)
-			adColonyAppOptions = [[AdColonyAppOptions alloc] init];
-		adColonyAdOptions = [[AdColonyAdOptions alloc] init];
-		adColonyUserMetaData = [[AdColonyUserMetadata alloc] init];
+	self->rewardCallBackReady = false;
+	self->adColonyAppOptions = [AdColony getAppOptions];
+	if (self->adColonyAppOptions == nil)
+		self->adColonyAppOptions = [[AdColonyAppOptions alloc] init];
+	self->adColonyAdOptions = [[AdColonyAdOptions alloc] init];
+	self->adColonyUserMetaData = [[AdColonyUserMetadata alloc] init];
 		@try {
 			[self setAppID:[command.arguments objectAtIndex:0]];
 			[self setZoneIDs:[NSArray arrayWithObjects:[command.arguments objectAtIndex:1], nil]];
@@ -30,8 +49,8 @@
 			NSLog(@"Invalid configuration parameter");
 		}
 
-		[self configureWithAppID:_appID
-					  andZoneIDs:_zoneIDs
+        [self configureWithAppID:self->_appID
+                      andZoneIDs:self->_zoneIDs
 				  withCallBackId:command.callbackId];
 
 	}];
@@ -41,10 +60,10 @@
 	[self.commandDelegate runInBackground:^{
 
 		NSDictionary *appOptions = [command.arguments objectAtIndex:0];
-		if (adColonyAppOptions == nil)
-			adColonyAppOptions = [AdColony getAppOptions];
-		if (adColonyAppOptions == nil)
-			adColonyAppOptions = [[AdColonyAppOptions alloc] init];
+        if (self->adColonyAppOptions == nil)
+            self->adColonyAppOptions = [AdColony getAppOptions];
+        if (self->adColonyAppOptions == nil)
+            self->adColonyAppOptions = [[AdColonyAppOptions alloc] init];
 		[self processAppOptions:appOptions];
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
 														  messageAsString:@"SetAppOptions"];
@@ -57,19 +76,19 @@
 	[self.commandDelegate runInBackground:^{
 
 		NSDictionary *adOptions = [command.arguments objectAtIndex:0];
-		if (adColonyAdOptions == nil)
-			adColonyAdOptions = [[AdColonyAdOptions alloc] init];
+        if (self->adColonyAdOptions == nil)
+            self->adColonyAdOptions = [[AdColonyAdOptions alloc] init];
 
 		for (id key in adOptions) {
 			@try {
 				NSString *val =[adOptions objectForKey:key];
 
 				if ([key caseInsensitiveCompare:@"confirmation_enabled"] == NSOrderedSame) {
-					[adColonyAdOptions setShowPrePopup:[val boolValue]];
+                    [self->adColonyAdOptions setShowPrePopup:[val boolValue]];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"results_enabled"] == NSOrderedSame) {
-					[adColonyAdOptions setShowPostPopup:[val boolValue]];
+                    [self->adColonyAdOptions setShowPostPopup:[val boolValue]];
 					continue;
 				}
 			} @catch (NSException *ex) {
@@ -93,55 +112,55 @@
 	[self.commandDelegate runInBackground:^{
 
 		NSDictionary *metadata = [command.arguments objectAtIndex:0];
-		if (adColonyUserMetaData == nil)
-			adColonyUserMetaData = [[AdColonyUserMetadata alloc] init];
+        if (self->adColonyUserMetaData == nil)
+            self->adColonyUserMetaData = [[AdColonyUserMetadata alloc] init];
 		for (id key in metadata) {
 			NSString *val = [metadata objectForKey:key];
 			@try {
 				if ([key caseInsensitiveCompare:@"adc_age"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserAge:[val integerValue]];
+                    [self->adColonyUserMetaData setUserAge:[val integerValue]];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_gender"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserGender:val];
+                    [self->adColonyUserMetaData setUserGender:val];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_marital_status"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserMaritalStatus:val];
+                    [self->adColonyUserMetaData setUserMaritalStatus:val];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_education"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserEducationLevel:val];
+                    [self->adColonyUserMetaData setUserEducationLevel:val];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_household_income"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserHouseholdIncome:[NSNumber numberWithDouble:[val doubleValue]]];
+                    [self->adColonyUserMetaData setUserHouseholdIncome:[NSNumber numberWithDouble:[val doubleValue]]];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_zip"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserZipCode:val];
+                    [self->adColonyUserMetaData setUserZipCode:val];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_interests"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserInterests:[NSArray arrayWithObject:val]];
+                    [self->adColonyUserMetaData setUserInterests:[NSArray arrayWithObject:val]];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_longitude"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserLongitude:[NSNumber numberWithDouble:[val doubleValue]]];
+                    [self->adColonyUserMetaData setUserLongitude:[NSNumber numberWithDouble:[val doubleValue]]];
 					continue;
 				}
 				if ([key caseInsensitiveCompare:@"adc_latitude"] == NSOrderedSame) {
-					[adColonyUserMetaData setUserLatitude:[NSNumber numberWithDouble:[val doubleValue]]];
+                    [self->adColonyUserMetaData setUserLatitude:[NSNumber numberWithDouble:[val doubleValue]]];
 					continue;
 				}
 			} @catch (NSException *ex) {
 				NSLog(@"Invalid key/value pair :%@:%@",key,[metadata objectForKey:key]);
 			}
 		}
-		if (adColonyAdOptions == nil)
-			adColonyAdOptions = [[AdColonyAdOptions alloc] init];
-		[adColonyAdOptions setUserMetadata:adColonyUserMetaData];
-		[adColonyAppOptions setUserMetadata:adColonyUserMetaData];
+        if (self->adColonyAdOptions == nil)
+            self->adColonyAdOptions = [[AdColonyAdOptions alloc] init];
+        [self->adColonyAdOptions setUserMetadata:self->adColonyUserMetaData];
+        [self->adColonyAppOptions setUserMetadata:self->adColonyUserMetaData];
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
 														  messageAsString:@"SetUserMetaData"];
 		[pluginResult setKeepCallback:[NSNumber numberWithInteger:0]];
@@ -160,7 +179,7 @@
 - (void) requestInterstitial: (CDVInvokedUrlCommand*) command{
 	[self.commandDelegate runInBackground:^{
 
-		[self requestInterstitialInZone:[_zoneIDs objectAtIndex:0]
+        [self requestInterstitialInZone:[self->_zoneIDs objectAtIndex:0]
 						 withCallbackId:command.callbackId];
 
 	}];
@@ -189,21 +208,21 @@
 
 	[self.commandDelegate runInBackground:^{
 
-		if (_zone == nil) {
-			_zone = [AdColony zoneForID:[_zoneIDs firstObject]];
-			if (_zone == nil) {
+        if (self->_zone == nil) {
+            self->_zone = [AdColony zoneForID:[self->_zoneIDs firstObject]];
+            if (self->_zone == nil) {
 				CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-																  messageAsString:[NSString stringWithFormat:@"Invalid Zone %@",[_zoneIDs firstObject]]];
+                                                                  messageAsString:[NSString stringWithFormat:@"Invalid Zone %@",[self->_zoneIDs firstObject]]];
 				[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 				return;
 			}
 		}
-		NSString *zoneID = _zone.identifier;
+        NSString *zoneID = self->_zone.identifier;
 
 		UIView *webView = self.webView;
 		id <CDVWebViewEngineProtocol> webViewEngine = self.webViewEngine;
 
-		_zone.reward = ^(BOOL success, NSString *name, int amount) {
+        self->_zone.reward = ^(BOOL success, NSString *name, int amount) {
 
 			// The Zone handler sends this back to the calling app
 			if (success) {
@@ -273,7 +292,7 @@
 									};
 
 									ad.expire = ^{
-										_adColonyInterstitial = nil;
+                                        self->_adColonyInterstitial = nil;
 										CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
 																						  messageAsString:@"AdColonyRequestExpiring"];
 										[pluginResult setKeepCallback:[NSNumber numberWithInteger:0]]; // Should be the end of this callback
@@ -284,7 +303,7 @@
 										}
 									};
 
-									_adColonyInterstitial = ad;
+                                    self->_adColonyInterstitial = ad;
 									if (callbackId) {
 										CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
 																						  messageAsString:@"AdColonyRequestFilled"];
@@ -337,6 +356,15 @@
 			[adColonyAppOptions setUserID:val];
 			continue;
 		}
+        if ([key caseInsensitiveCompare:@"gdpr_required"] == NSOrderedSame) {
+            [adColonyAppOptions setGdprRequired:val];
+            continue;
+        }
+        if ([key caseInsensitiveCompare:@"consent_string"] == NSOrderedSame) {
+            [adColonyAppOptions setGdprConsentString:val];
+            continue;
+        }
+
 		@try {
 			[adColonyAppOptions setValue:val forKey:key];
 		} @catch (NSException *ex) {

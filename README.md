@@ -3,36 +3,43 @@
 Allows you to integrate AdColony monetization platform with your Apache Cordova app.
 
 ### Requirements
+
 #### AdColony framework versions:
 
->iOS SDK version is 3.2.1.0 64bit production
+iOS SDK version is 4.1.0
 
->Android SDK version is 3.2.1
+Android SDK version is 4.1.0
 
 Please make sure that you read the AdColony Project setup guides for both Android and iOS if you're building on both platforms.
 
 All the documentation is available from here:
 
-[AdColony Android SDK 3](https://github.com/AdColony/AdColony-Android-SDK-3)
+[AdColony Android SDK](https://github.com/AdColony/AdColony-Android-SDK)
 
-[AdColony iOS SDK 3](https://github.com/AdColony/AdColony-iOS-SDK-3)
+[AdColony iOS SDK](https://github.com/AdColony/AdColony-iOS-SDK)
 
-## Installation
+This update integrates AdColony using a podspec in the plugin definition
+
+# Install plugin
 
 ```
 $ cordova plugin add cordova-plugin-adcolony
 ```
 
-## Methods
+See the AdColonyDemoApp code for how to configure and provide an APP\_ID and a ZONE\_ID within your JavaScript
+
+### Android
+
+You will need to manually merge the contents of the file platforms/android/proguard-adcolony.txt to your existing project proguard-project.txt file (I need to figure out how to do this via a script still)
+
+### iOS
+
+Please note that you must follow steps 2 onwards in the AdColony Project Setup notes (https://github.com/AdColony/AdColony-iOS-SDK/wiki/Project-Setup)
+
+# Methods
 
 #### AdColony.configureWithAppID(appID, zoneIDs, options)  
 *Initial method wich connects to AdColony.*
-
-| Argument | Type    | Description          |
-|----------|--------|-----------------------|
-| appID  | String |  App id in AdColony Dashboard |
-| zoneIDs  | [String] | Ad zones ids |
-| options  | String | [App options](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyAppOptions.html)|
 
 #### AdColony.setAppOptions(options)  
 *Set App Options.*
@@ -41,16 +48,50 @@ $ cordova plugin add cordova-plugin-adcolony
 |----------|--------|-----------------------|
 | options  | Object |  JSON Array typically with ONE element a JSON object with the [app options](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyAppOptions.html)|
 
-#### AdColony.setAdOptions(options)  
-*Set Ad options.*
+#### AdColony.configureWithAppID(appID, zoneIDs, options)  
+Initial method wich connects to AdColony.  
 
 | Argument | Type    | Description          |
 |----------|--------|-----------------------|
-| options  | Object | JSON Array typically with ONE element a JSON object with the [ad options](https://adcolony-www-common.s3.amazonaws.com/Appledoc/3.1.0/Classes/AdColonyAdOptions.html)|
+| appID    | string |  the appID of your app in AdColony Dashboard |
+| zoneIDs    | [strings] |  array of your ad zones ids |
+| options    | Object |  arapp options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html) |
 
+
+#### AdColony.setAppOptions(options)  
+Set App Options.
+
+| Argument | Type    | Description          |
+|----------|--------|-----------------------|
+| options    | Object |  JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html) |
+
+
+Note that I use the following strings from the Android SDK for cross-platform compatability
+
+```
+orientation
+app_orientation
+origin_store
+disable_logging
+user_id
+gdpr_required
+consent_string
+test_mode
+multi_window_enabled
+mediation_network
+mediation_network_version
+plugin
+plugin_version
+keep_screen_on
+```
+
+#### AdColony.setAdOptions(options)  
+Set Ad options.
+options - JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAdOptions.html)
 
 #### AdColony.setUserMetaData(metadata)  
-*Set User meta-data for ad retrieval. Calling this sets the user metadata for all future ad requests*
+Set User meta-data for ad retrieval. Calling this sets the user metadata for all future ad requests 
+metadata - JSON Array typically with ONE element a JSON object with the user meta-data. User meta-data defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyUserMetadata.html)
 
 | Argument | Type    | Description          |
 |----------|--------|-----------------------|

@@ -12,9 +12,9 @@
 
     <engines>
         <engine name="cordova-android"
-                version=">=3.5.0"/>
+                version=">=8.0.0"/>
         <engine name="cordova-ios"
-                version=">=4.0.0"/>
+                version=">=5.0.0"/>
     </engines>
 
 
@@ -42,6 +42,16 @@
         <framework src="StoreKit.framework"/>
         <framework src="SystemConfiguration.framework"/>
         <framework src="WebKit.framework"/>
+		<podspec>
+			<config>
+				<source url="https://github.com/AdColony/AdColony-iOS-SDK.git" />
+				<source url="https://github.com/CocoaPods/Specs.git"/>
+			</config>
+			<pods use-frameworks="true">
+				<pod name="AdColony" />
+			</pods>
+		</podspec>
+
     </platform>
     <platform name="android">
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
@@ -70,6 +80,6 @@
 
         <framework src="src/android/adcolony.gradle" custom="true" type="gradleReference"/>
         <source-file src="src/android/com/adcolony/plugin/AdColonyPlugin.java" target-dir="src/com/adcolony/plugin"/>
-        <source-file src="src/android/proguard-project.txt" target-dir="./"/>
+        <source-file src="src/android/proguard-adcolony.txt" target-dir="./"/>
     </platform>
 </plugin>
