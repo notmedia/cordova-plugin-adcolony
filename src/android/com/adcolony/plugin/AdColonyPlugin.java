@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -25,9 +24,6 @@
   */
 
 package com.adcolony.plugin;
-=======
- package com.adcolony.plugin;
->>>>>>> upstream/master
 
 import android.content.pm.PackageManager;
 import android.util.Log;
