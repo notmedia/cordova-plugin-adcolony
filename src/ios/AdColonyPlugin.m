@@ -35,12 +35,12 @@
 - (void) configureWithAppID: (CDVInvokedUrlCommand*) command{
 	[self.commandDelegate runInBackground:^{
 
-        self->rewardCallBackReady = false;
-        self->adColonyAppOptions = [AdColony getAppOptions];
-        if (self->adColonyAppOptions == nil)
-            self->adColonyAppOptions = [[AdColonyAppOptions alloc] init];
-        self->adColonyAdOptions = [[AdColonyAdOptions alloc] init];
-        self->adColonyUserMetaData = [[AdColonyUserMetadata alloc] init];
+	self->rewardCallBackReady = false;
+	self->adColonyAppOptions = [AdColony getAppOptions];
+	if (self->adColonyAppOptions == nil)
+		self->adColonyAppOptions = [[AdColonyAppOptions alloc] init];
+	self->adColonyAdOptions = [[AdColonyAdOptions alloc] init];
+	self->adColonyUserMetaData = [[AdColonyUserMetadata alloc] init];
 		@try {
 			[self setAppID:[command.arguments objectAtIndex:0]];
 			[self setZoneIDs:[NSArray arrayWithObjects:[command.arguments objectAtIndex:1], nil]];
