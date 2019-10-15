@@ -2,6 +2,10 @@
 
 Allows you to integrate AdColony monetization platform with your Apache Cordova app.
 
+### Requirements
+
+#### AdColony framework versions:
+
 iOS SDK version is 4.1.0
 
 Android SDK version is 4.1.0
@@ -46,13 +50,21 @@ Please note that you must follow steps 2 onwards in the AdColony Project Setup n
 
 #### AdColony.configureWithAppID(appID, zoneIDs, options)  
 Initial method wich connects to AdColony.  
-(string) appID - the appID of your app in AdColony Dashboard  
-([strings]) zoneIDs - array of your ad zones ids  
-options - app options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html)
+
+| Argument | Type    | Description          |
+|----------|--------|-----------------------|
+| appID    | string |  the appID of your app in AdColony Dashboard |
+| zoneIDs    | [strings] |  array of your ad zones ids |
+| options    | Object |  arapp options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html) |
+
 
 #### AdColony.setAppOptions(options)  
 Set App Options.
-options - JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html)
+
+| Argument | Type    | Description          |
+|----------|--------|-----------------------|
+| options    | Object |  JSON Array typically with ONE element a JSON object with the options. Options defined [here](https://adcolony-www-common.s3.amazonaws.com/Appledoc/4.1.0/Classes/AdColonyAppOptions.html) |
+
 
 Note that I use the following strings from the Android SDK for cross-platform compatability
 
