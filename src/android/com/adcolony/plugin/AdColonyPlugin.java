@@ -20,6 +20,7 @@
  /**
   * @brief A Cordova plugin for AdColony
   * @author Ferdi Ladeira SmartMobiWare Ltd
+  * Added License
   *
   */
 
